@@ -1,0 +1,57 @@
+{
+  "name": "typeorm-loader",
+  "version": "0.0.1-0.0",
+  "description": "A database-aware data-loader for GraphQL.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && [ -d src/tests ] && NODE_ENV=test mocha -r ts-node/register -r tslib src/tests/test_**.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Webtomizer/typeorm-loader.git"
+  },
+  "keywords": [
+    "typeorm",
+    "database",
+    "graphql",
+    "data",
+    "loader",
+    "batching",
+    "caching"
+  ],
+  "author": "Abdullah Ali",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Webtomizer/typeorm-loader/issues"
+  },
+  "homepage": "https://github.com/Webtomizer/typeorm-loader#readme",
+  "dependencies": {
+    "deep-equal": "^1.0.1",
+    "object-path": "^0.11.4",
+    "tslib": "^1.8.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.0.5",
+    "@types/chance": "^0.7.35",
+    "@types/deep-equal": "^1.0.1",
+    "@types/mocha": "^2.2.44",
+    "@types/node": "^8.0.53",
+    "@types/object-path": "^0.9.29",
+    "chai": "^4.1.2",
+    "chance": "^1.0.12",
+    "graphql": "^0.11.7",
+    "mocha": "^4.0.1",
+    "sqlite3": "^3.1.13",
+    "ts-node": "^3.3.0",
+    "typeorm": "^0.1.2",
+    "typescript": "^2.6.1"
+  },
+  "peerDependencies": {
+    "typeorm": "^0.1.2"
+  },
+  "optionalDependencies": {
+    "@types/graphql": "^0.11.6"
+  }
+}

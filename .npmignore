@@ -1,0 +1,12 @@
+src/
+**/*.ts
+!**/*.d.ts
+**/*.tsx
+!**/*.d.tsx
+**/test_*.js
+**/test_*.js.map
+tsconfig.json
+typings.json
+typings/
+*.sqlite3
+dist/test/

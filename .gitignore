@@ -1,5 +1,5 @@
 dist/
 node_modules/
-cloudpress_packages/
 npm-debug.log
 *.sqlite3
+.idea

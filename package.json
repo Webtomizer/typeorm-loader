@@ -1,10 +1,11 @@
 {
   "name": "typeorm-loader",
-  "version": "0.0.1-0.0",
-  "description": "A database-aware data-loader for GraphQL.",
+  "version": "0.0.1-0.1",
+  "description": "A database-aware data-loader for use with GraphQL and TypeORM.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "prepublish": "npm run test",
     "build": "tsc",
     "test": "npm run build && [ -d src/tests ] && NODE_ENV=test mocha -r ts-node/register -r tslib src/tests/test_**.ts"
   },

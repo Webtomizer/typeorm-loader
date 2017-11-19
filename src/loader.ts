@@ -31,8 +31,7 @@ export class GraphQLDatabaseLoader {
    * @param {Connection} connection The database connection.
    * @param {LoaderOptions} options (optional) Loader options.
    */
-  constructor(public connection: Connection, public options: LoaderOptions = {}) {
-  }
+  constructor(public connection: Connection, public options: LoaderOptions = {}) { }
 
   /**
    * Load an entity from the database.
@@ -114,10 +113,17 @@ export class GraphQLDatabaseLoader {
   }
 
   /**
+   * Clears the loader cache.
+   */
+  clear() {
+    this._cache = {};
+  }
+
+  /**
    * Process and clear the current queue.
    * @returns {Promise<void>}
    */
-  async processAll() {
+  protected async processAll() {
     // Clear and capture the current queue.
     const queue = this._queue.splice(0, this._queue.length);
     try {

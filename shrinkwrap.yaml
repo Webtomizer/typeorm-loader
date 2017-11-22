@@ -15,7 +15,7 @@ devDependencies:
   mocha: 4.0.1
   sqlite3: 3.1.13
   ts-node: 3.3.0
-  typeorm: 0.1.2
+  typeorm: 0.1.5
   typescript: 2.6.1
 optionalDependencies:
   '@types/graphql': 0.11.6
@@ -1019,7 +1019,7 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-N9IvkQslUGYGC24RkJk1ba99foK6TkwC2FHAEBlQFBP0RxQZS8ZpJuAZcwiY/w9ZJHFQb1aOXBI60OdxhTrwEQ==
-  /typeorm/0.1.2:
+  /typeorm/0.1.5:
     dependencies:
       app-root-path: 2.0.1
       chalk: 2.3.0
@@ -1034,7 +1034,7 @@ packages:
       yargs: 9.0.1
     dev: true
     resolution:
-      integrity: sha512-JMtkJI7PCzf2DM1UUbtd+6HmKNxjZMZTZP6htgbOrMobHvspnVcfIiy1UJEZ2W4TGQoKDKA58+aRXgJ/CK3ysg==
+      integrity: sha512-xTDVcpriLVxz35CjrYX3cZxxW5Stzet+Y63cmThlKdnzodgoLI+YrWTWFNjNfmw+W3WzBwuttanG8DtA7mVghg==
   /typescript/2.6.1:
     dev: true
     engines:
@@ -1175,7 +1175,7 @@ packages:
     resolution:
       integrity: sha1-5a2ryKz0CPY4X8dklWhMiOavaJo=
 registry: 'https://registry.npmjs.org/'
-shrinkwrapMinorVersion: 2
+shrinkwrapMinorVersion: 4
 shrinkwrapVersion: 3
 specifiers:
   '@types/chai': ^4.0.5
@@ -1194,5 +1194,5 @@ specifiers:
   sqlite3: ^3.1.13
   ts-node: ^3.3.0
   tslib: ^1.8.0
-  typeorm: ^0.1.2
+  typeorm: ^0.1.5
   typescript: ^2.6.1

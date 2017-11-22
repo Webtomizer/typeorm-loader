@@ -7,7 +7,12 @@ import { select, graphqlFields, Selection } from './select';
 import { Hash } from './hash';
 import deepEqual = require('deep-equal');
 
-export type LoaderOptions = {}
+export type LoaderOptions = {
+  /**
+   * Time-to-live for cache.
+   */
+  ttl?: number;
+}
 
 /**
  * GraphQLDatabaseLoader is a caching loader that folds a batch of different database queries into a singular query.
@@ -23,7 +28,7 @@ export class GraphQLDatabaseLoader {
     reject: (reason: any) => void,
     entity: Function
   }[] = [];
-  private _cache: Hash<Promise<any>> = {};
+  private _cache: Map<string, Promise<any>> = new Map();
   private _immediate?: number;
 
   /**
@@ -48,8 +53,8 @@ export class GraphQLDatabaseLoader {
     // Generate a key hash from the query parameters.
     const key = hash.update(JSON.stringify([ where, fields ])).digest().toString('hex');
     // If the key matches a cache entry, return it.
-    if (key in this._cache)
-      return this._cache[ key ];
+    if (this._cache.has(key))
+      return this._cache.get(key);
     // If we have an immediate scheduled, cancel it.
     if (this._immediate) {
       clearImmediate(this._immediate);
@@ -62,7 +67,7 @@ export class GraphQLDatabaseLoader {
     // Set a new immediate.
     this._immediate = setImmediate(() => this.processAll());
     // Cache the promise.
-    this._cache[ key ] = promise;
+    this._cache.set(key, promise);
     // Return the promise.
     return promise;
   }
@@ -82,8 +87,8 @@ export class GraphQLDatabaseLoader {
     // Generate a key hash from the query parameters.
     const key = hash.update(JSON.stringify([ where, fields ])).digest().toString('hex');
     // If the key matches a cache entry, return it.
-    if (key in this._cache)
-      return this._cache[ key ];
+    if (this._cache.has(key))
+      return this._cache.get(key);
     // If we have an immediate scheduled, cancel it.
     if (this._immediate) {
       clearImmediate(this._immediate);
@@ -96,7 +101,7 @@ export class GraphQLDatabaseLoader {
     // Set a new immediate.
     this._immediate = setImmediate(() => this.processAll());
     // Cache the promise.
-    this._cache[ key ] = promise;
+    this._cache.set(key, promise);
     // Return the promise.
     return promise;
   }
@@ -116,7 +121,7 @@ export class GraphQLDatabaseLoader {
    * Clears the loader cache.
    */
   clear() {
-    this._cache = {};
+    this._cache.clear();
   }
 
   /**
@@ -184,14 +189,16 @@ export class GraphQLDatabaseLoader {
             results.push(entity);
           });
           q.resolve(results.length ? Promise.all(results) : []);
+          this._cache.delete(q.key);
         }
       });
     } catch (e) {
       // An error occurred, reject the entire queue.
-      queue.forEach(q => q.reject(e));
+      queue.forEach(q => {
+        q.reject(e);
+        this._cache.delete(q.key);
+      });
     }
-    // clear the cache
-    this._cache = {};
   }
 
   /**

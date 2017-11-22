@@ -1,6 +1,6 @@
 {
   "name": "typeorm-loader",
-  "version": "0.0.1-0.2",
+  "version": "0.0.1-0.3",
   "description": "A database-aware data-loader for use with GraphQL and TypeORM.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

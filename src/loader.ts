@@ -190,7 +190,8 @@ export class GraphQLDatabaseLoader {
       // An error occurred, reject the entire queue.
       queue.forEach(q => q.reject(e));
     }
-
+    // clear the cache
+    this._cache = {};
   }
 
   /**

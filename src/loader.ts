@@ -162,17 +162,25 @@ export class GraphQLDatabaseLoader {
       // Iterate over the queue again.
       queue.forEach(q => {
         // Nothing found? Resolve with undefined.
-        if (!raw.length)
-          return q.resolve(undefined);
+        if (!raw.length) {
+          q.resolve(undefined);
+          this._cache.delete(q.key);
+          return;
+        }
         if (!q.many) {
           // Find the first result with our key.
           const container = raw.find(r => !!Object.keys(r).find(k => k.startsWith(q.key)));
           const obj = this.entityRawToObject(container, q.key);
           // If it's null, resolve with nothing.
-          if (obj === null)
-            return q.resolve(undefined);
+          if (obj === null) {
+            q.resolve(undefined);
+            this._cache.delete(q.key);
+            return;
+          }
           // Convert our plain object to an entity, and resolve/reject accordingly.
-          this.createEntityFromRaw(q.entity, obj).then(q.resolve, q.reject);
+          this.createEntityFromRaw(q.entity, obj).then(q.resolve, q.reject).then(() => {
+            this._cache.delete(q.key);
+          });
         } else { // many
           // The results we will push to.
           const results: any[] = [];

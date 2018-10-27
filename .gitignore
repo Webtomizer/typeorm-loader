@@ -1,6 +1,8 @@
 dist/
 node_modules/
-npm-debug.log
+npm-*.log
 *.sqlite3
 .idea
 ts-node-*/
+yarn-*.log
+

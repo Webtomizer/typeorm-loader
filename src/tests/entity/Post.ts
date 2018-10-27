@@ -5,16 +5,16 @@ import { User } from './User';
 export class Post extends BaseEntity {
 
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column('varchar')
-  title: string;
+  title!: string;
 
   @Column('text')
-  content: string;
+  content!: string;
 
   @ManyToOne(() => User)
   @JoinColumn()
-  owner: User;
+  owner!: User;
 
 }

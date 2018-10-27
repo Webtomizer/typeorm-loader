@@ -29,7 +29,7 @@ export class GraphQLDatabaseLoader {
     entity: Function
   }[] = [];
   private _cache: Map<string, Promise<any>> = new Map();
-  private _immediate?: number;
+  private _immediate?: NodeJS.Immediate;
 
   /**
    * Constructs an instance.

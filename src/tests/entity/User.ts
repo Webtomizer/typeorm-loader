@@ -4,18 +4,18 @@ import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
 export class User extends BaseEntity {
 
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column('varchar')
-  email: string;
+  email!: string;
 
   @Column('varchar')
-  firstName: string;
+  firstName!: string;
 
   @Column('varchar')
-  lastName: string;
+  lastName!: string;
 
   @Column('int')
-  age: number;
+  age!: number;
 
 }

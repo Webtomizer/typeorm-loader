@@ -31,7 +31,7 @@ function parseLiteral(ast: ValueNode): any {
   }
 }
 
-function getSelections(ast: OperationDefinitionNode): SelectionNode[] {
+function getSelections(ast: OperationDefinitionNode): ReadonlyArray<SelectionNode> {
   if (ast &&
     ast.selectionSet &&
     ast.selectionSet.selections &&

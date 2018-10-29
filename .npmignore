@@ -10,7 +10,7 @@ typings.json
 typings/
 *.sqlite3
 dist/tests/
-src/tests/
+tests/
 .git
 .idea
 ts-node-*/

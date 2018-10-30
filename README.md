@@ -3,7 +3,7 @@ A database-aware data-loader for use with GraphQL and TypeORM.
 
 ## Description
 
-This package exports `GraphQLDatabaseLoader`, which is a caching loader that folds a batch of different database queries into a singular query.
+This package exports `GraphQLDatabaseLoader`, which is a caching loader that folds a batch of different database queries into a singular database request.
 
 ## Installation
 
@@ -13,7 +13,7 @@ npm install typeorm-loader --save
 
 ## Usage
 
-You should instantiate a new loader with every request (just to be on the safe side, you don't want data leaking between user sessions), you instantiate it by passing the TypeORM connection as the first argument.
+You should instantiate a new loader per session (just to be on the safe side, you don't want data leaking between user sessions), you instantiate it by passing the TypeORM connection as the first argument.
 
 ```ts
   import { GraphQLDatabaseLoader } from 'typeorm-loader';

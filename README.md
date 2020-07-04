@@ -1,3 +1,7 @@
+# Archived 
+
+## This package is deprecated, please use: https://gitlab.com/Mando75/typeorm-graphql-loader/
+
 # typeorm-loader
 A database-aware data-loader for use with GraphQL and TypeORM.
 
